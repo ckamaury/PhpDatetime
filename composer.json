@@ -1,0 +1,29 @@
+{
+    "name": "ckamaury/phpdatetime",
+    "description": "PHP Datetime extends class for Datetime. Including Timer and Slots.",
+    "type": "library",
+    "license": "MIT",
+    "version": "1.0.0",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Romain FRANCOIS"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "CkAmaury\\PhpDatetime\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CkAmaury\\PhpDatetimeTests\\": "tests/PhpDatetimeTests"
+        }
+    }
+}
