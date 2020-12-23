@@ -10,7 +10,7 @@ use DateTimeZone;
 
 class DateTime extends \DateTime {
 
-    public function init($datetime) : self{
+    public function init(DateTimeInterface $datetime) : self{
         $this->setTimestamp($datetime->getTimestamp());
         return $this;
     }
@@ -298,37 +298,39 @@ class DateTime extends \DateTime {
     public function interval(DateTimeInterface $date): DateInterval{
         return $this->diff($date);
     }
-    public function intervalYears(DateTimeInterface $date): int{
+    public function intervalYear(DateTimeInterface $date): int{
         return $this->interval($date)->y;
     }
-    public function intervalMonths(DateTimeInterface $date): int{
+    public function intervalMonth(DateTimeInterface $date): int{
         return $this->interval($date)->m;
     }
-    public function intervalDays(DateTimeInterface $date): int{
+    public function intervalDay(DateTimeInterface $date): int{
         return $this->interval($date)->d;
     }
-    public function intervalHours(DateTimeInterface $date): int{
+    public function intervalHour(DateTimeInterface $date): int{
         return $this->interval($date)->h;
     }
-    public function intervalMinutes(DateTimeInterface $date): int{
+    public function intervalMinute(DateTimeInterface $date): int{
         return $this->interval($date)->i;
     }
-    public function intervalSeconds(DateTimeInterface $date): int{
+    public function intervalSecond(DateTimeInterface $date): int{
         return $this->interval($date)->s;
     }
-
-    //######### INTERVAL TIMESTAMP #########
-    public function timestamp(DateTimeInterface $date): int{
-        return abs($this->getTimestamp() - $date->getTimestamp());
+    public function intervalFullDays(DateTimeInterface $date): float{
+        return $this->intervalFullHours($date) / 24;
     }
-    public function timestampSeconds(DateTimeInterface $date): int{
-        return $this->timestamp($date);
+    public function intervalFullHours(DateTimeInterface $date): float{
+        return $this->intervalFullMinutes($date) / 60;
     }
-    public function timestampMinutes(DateTimeInterface $date): float{
-        return round($this->timestamp($date) / 60,4);
+    public function intervalFullMinutes(DateTimeInterface $date): float{
+        return $this->intervalFullSeconds($date) / 60;
     }
-    public function timestampHours(DateTimeInterface $date): float{
-        return round($this->timestampHours($date) / 60,4);
+    public function intervalFullSeconds(DateTimeInterface $date): int{
+        $interval = $this->interval($date);
+        return $interval->days * 24 * 60 * 60
+            + $interval->h * 60 * 60
+            + $interval->i * 60
+            + $interval->s;
     }
 
     //######### OTHERS #########
