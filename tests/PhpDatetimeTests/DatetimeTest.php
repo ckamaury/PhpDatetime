@@ -45,6 +45,5 @@ class DatetimeTest extends TestCase{
         $datetime = new DateTime('1900-04-01');
         self::assertNotEquals("1",$datetime->getDayString());
         self::assertEquals("01",$datetime->getDayString());
-
     }
 }
