@@ -4,3 +4,6 @@ composer.phar
 
 ### IDEA
 /.idea/
+
+### PHPUNIT
+/.phpunit.result.cache
