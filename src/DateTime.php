@@ -14,6 +14,20 @@ class DateTime extends \DateTime {
         $this->setTimestamp($datetime->getTimestamp());
         return $this;
     }
+    public function initByMicroTimestamp($microtime):self{
+        $this->setTimestamp(round($microtime / 1000));
+        return $this;
+    }
+    public function initByFrenchFormat(string $frenchDate):?self{
+        if(in_array($frenchDate,array('31/12/9999',null))){
+            return null;
+        }
+        $date = self::createFromFormat('d/m/Y',$frenchDate);
+        if($date === FALSE){
+            return null;
+        }
+        return $this->init($date);
+    }
     public function clone(){
         return clone $this;
     }

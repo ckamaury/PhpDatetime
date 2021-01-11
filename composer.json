@@ -3,7 +3,7 @@
     "description": "PHP Datetime extends class for Datetime. Including Timer and Slots.",
     "type": "library",
     "license": "MIT",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "minimum-stability": "stable",
     "authors": [
         {
