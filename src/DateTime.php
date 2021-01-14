@@ -18,7 +18,7 @@ class DateTime extends \DateTime {
         $this->setTimestamp(round($microtime / 1000));
         return $this;
     }
-    public function initByFrenchFormat(string $frenchDate):?self{
+    public function initByFrenchFormat(?string $frenchDate = null):?self{
         if(in_array($frenchDate,array('31/12/9999',null))){
             return null;
         }
